@@ -1,6 +1,29 @@
 package com.sistwfc.farmasur.model;
 
-public class tablaProductos {
+import java.io.Serializable;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapKey;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="tablaproductos")
+public class tablaProductos implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private Integer Id_Prod;
 	private String troquel;
 	private String Cod_Barras;
@@ -11,10 +34,15 @@ public class tablaProductos {
 	private Integer id_lab;
 	private Integer id_Precio;
 	
-	
 	public tablaProductos() {
-		// Constructor vacio.
+		//
 	}
+	
+	@OneToMany(mappedBy="Id_Precio")
+	private List<tablaLaboratorios> tablalaboratorios;
+	
+	@OneToMany(mappedBy="id_present")
+	private List<tablaPresentacion> tablapresentacion;
 	
 	
 	public tablaProductos(Integer id_Prod, String troquel, String cod_Barras, String registro, String pricActivo,
@@ -30,8 +58,6 @@ public class tablaProductos {
 		this.id_lab = id_lab;
 		this.id_Precio = id_Precio;
 	}
-
-
 
 	public Integer getId_Prod() {
 		return Id_Prod;
@@ -88,12 +114,46 @@ public class tablaProductos {
 		this.id_Precio = id_Precio;
 	}
 
-
-	@Override
-	public String toString() {
-		return "tablaProductos [Id_Prod=" + Id_Prod + ", troquel=" + troquel + ", Cod_Barras=" + Cod_Barras
-				+ ", Registro=" + Registro + ", PricActivo=" + PricActivo + ", id_nom=" + id_nom + ", id_present="
-				+ id_present + ", id_lab=" + id_lab + ", id_Precio=" + id_Precio + "]";
+	public tablaProductos(Integer id_Prod, String troquel, String cod_Barras, String registro, String pricActivo,
+			Integer id_nom, Integer id_present, Integer id_lab, Integer id_Precio,
+			tablaPresentacion tablapresentacion) {
+		super();
+		Id_Prod = id_Prod;
+		this.troquel = troquel;
+		Cod_Barras = cod_Barras;
+		Registro = registro;
+		PricActivo = pricActivo;
+		this.id_nom = id_nom;
+		this.id_present = id_present;
+		this.id_lab = id_lab;
+		this.id_Precio = id_Precio;
+		
 	}
+
+
+
+	public List<tablaLaboratorios> getTablalaboratorios() {
+		return tablalaboratorios;
+	}
+
+
+
+	public void setTablalaboratorios(List<tablaLaboratorios> tablalaboratorios) {
+		this.tablalaboratorios = tablalaboratorios;
+	}
+
+	public List<tablaPresentacion> getTablapresentacion() {
+		return tablapresentacion;
+	}
+
+	public void setTablapresentacion(List<tablaPresentacion> tablapresentacion) {
+		this.tablapresentacion = tablapresentacion;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 	
 }

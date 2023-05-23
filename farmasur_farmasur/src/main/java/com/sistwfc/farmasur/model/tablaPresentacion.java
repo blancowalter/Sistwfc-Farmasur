@@ -8,6 +8,8 @@ public class tablaPresentacion {
 		// Constructor vacio.
 	}
 	
+	private tablaProductos tablaproductos;
+	
 
 	public tablaPresentacion(Integer id_Pre, String presentacion) {
 		super();
@@ -33,6 +35,20 @@ public class tablaPresentacion {
 		Presentacion = presentacion;
 	}
 	
+	// get y setter de productos
+	
+	public tablaProductos getTablaproductos() {
+		return tablaproductos;
+	}
+
+
+
+	public void setTablaproductos(tablaProductos tablaproductos) {
+		this.tablaproductos = tablaproductos;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "tablaPresentacion [Id_Pre=" + Id_Pre + ", Presentacion=" + Presentacion + "]";

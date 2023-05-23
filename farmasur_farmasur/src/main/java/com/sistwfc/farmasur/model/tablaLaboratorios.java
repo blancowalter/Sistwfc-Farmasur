@@ -8,6 +8,8 @@ public class tablaLaboratorios {
 		// Constructor vacio
 	}
 	
+	private tablaProductos tablaproductos;
+	
 	public tablaLaboratorios(Integer id_Lab, String nombreLab) {
 		super();
 		Id_Lab = id_Lab;
@@ -28,6 +30,16 @@ public class tablaLaboratorios {
 
 	public void setNombreLab(String nombreLab) {
 		NombreLab = nombreLab;
+	}
+	
+	
+
+	public tablaProductos getTablaproductos() {
+		return tablaproductos;
+	}
+
+	public void setTablaproductos(tablaProductos tablaproductos) {
+		this.tablaproductos = tablaproductos;
 	}
 
 	@Override
